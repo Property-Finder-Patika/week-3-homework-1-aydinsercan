@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"strconv"
 )
 
@@ -26,14 +28,23 @@ func PrimeFactors(n int) (slc []int) {
 func main() {
 	slc := []int{}
 	str, str2 := "", ""
-	var number int = 20
 
-	slc = PrimeFactors(number)
-	fmt.Println(len(slc))
-
-	for i := 0; i < len(slc); i++ {
-		str += strconv.Itoa(slc[i]) + " x "
+	if os.Args[1] != "" {
+		n, err := strconv.Atoi(os.Args[1])
+		if err != nil {
+			log.Println("Given argument is not a number")
+		}
+		if n > 0 {
+			slc = PrimeFactors(n)
+		}
+		//fmt.Println(len(slc))
+		
+		for i := 0; i < len(slc); i++ {
+			str += strconv.Itoa(slc[i]) + " x "
+		}
+		str2 += str[:9] + " = " + strconv.Itoa(n)
+		fmt.Println(str2)
 	}
-	str2 += str[:9] + " = " + strconv.Itoa(number)
-	fmt.Println(str2)
+
+	// OUTPUT : 2 x 2 x 5 = 20
 }
