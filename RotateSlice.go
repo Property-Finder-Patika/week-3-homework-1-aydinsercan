@@ -6,7 +6,6 @@ import (
 )
 
 //Given an array, rotate the array to the right or to the left by k steps, where k is non-negative.
-//Check out: https://github.com/golang/go/wiki/SliceTricks
 //O(n) solution
 
 func main() {
